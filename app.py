@@ -1,15 +1,15 @@
-from flask import Flask, request
+from flask import Flask, request, redirect
+import requests
+import os
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def home():
-    return "App do Mercado Livre está online!"
-
-@app.route("/meli/callback")
-def meli_callback():
-    code = request.args.get("code")
+    code = request.args.get('code')
     if code:
-        return f"Recebi o código: {code}"
-    else:
-        return "Nenhum código foi recebido."
+        return f'Código recebido: {code}'
+    return 'Aplicativo Flask do Mercado Livre conectado!'
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=os.environ.get('PORT', 5000))
