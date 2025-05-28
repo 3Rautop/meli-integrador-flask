@@ -1,6 +1,4 @@
 Flask
 gunicorn
 requests
-Flask
-gunicorn
-requests
+
